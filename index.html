@@ -3,28 +3,61 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <script type="text/javascript" src="./script.js"></script>
     <title>Formulaire d'inscription</title>
   </head>
   <body>
     <h1>Formulaire d'inscription</h1>
-    <div>
-      <form action="submit_form.php" method="POST">
-        <label for="name">Nom:</label>
-        <input type="text" id="name" name="name" required /><br /><br />
+    <div id="error-overlay" class="error-overlay">
+      <div class="error-popup" id="error-content">
+        <span></span>
+        <br /><br />
+        <button onclick="hideError()">Fermer</button>
+      </div>
+    </div>
+    <div class="form-container">
+      <form id="inscriptionForm" onsubmit="return checkForm(event)">
+        <label for="nom">Nom :</label>
+        <input type="text" id="nom" name="nom" /><br /><br />
 
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required /><br /><br />
+        <label for="prenom">Prénom :</label>
+        <input type="text" id="prenom" name="prenom" />
 
-        <label for="password">Mot de passe:</label>
+        <br /><br />
+
+        <label for="adresse">Adresse :</label>
+        <input type="text" id="adresse" name="adresse" /><br /><br />
+
+        <label for="email">Email :</label>
+        <input type="email" id="email" name="email" /><br /><br />
+
+        <label for="telephone">Téléphone :</label>
+        <input type="text" id="telephone" name="telephone" /><br /><br />
+
+        <label for="date_naissance">Date de naissance :</label>
         <input
-          type="password"
-          id="password"
-          name="password"
-          required
+          type="date"
+          id="date_naissance"
+          name="date_naissance"
         /><br /><br />
 
-        <input type="submit" value="S'inscrire" />
+        <label for="login">Login :</label>
+        <input type="text" id="login" name="login" /><br /><br />
+
+        <label for="password">Mot de passe :</label>
+        <input type="password" id="password" name="password" /><br /><br />
+
+        <label for="confirm_password">Confirmation du mot de passe :</label>
+        <input
+          type="password"
+          id="confirm_password"
+          name="confirm_password"
+        /><br /><br />
+
+        <button type="submit">S'inscrire</button>
       </form>
     </div>
+    <div id="recap" class="container" style="display: none"></div>
   </body>
 </html>
